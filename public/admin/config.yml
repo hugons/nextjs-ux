@@ -1,4 +1,3 @@
-
 backend:
   name: git-gateway
   branch: master
@@ -174,12 +173,12 @@ collections:
             name: mainpitch,
             widget: object,
             fields:
-              label: Title
-              name: title
-              widget: string
-              label: Description
-              name: description
-              widget: text
+              - label: Title
+                name: title
+                widget: string
+              - label: Description
+                name: description
+                widget: text
           - label: Description
             name: description
             widget: string
@@ -187,19 +186,19 @@ collections:
             name: intro
             widget: object
             fields:
-              label: Heading
-              name: heading
-              widget: string
-              label: Description
-              name: description
-              widget: text
-              label: Blurbs
-              name: blurbs
-              widget: list
-              fields:
-                label: Image
-                name: image 
-                widget: image
-                label: Text
-                name: text
+              - label: Heading
+                name: heading
+                widget: string
+              - label: Description
+                name: description
                 widget: text
+              - label: Blurbs
+                name: blurbs
+                widget: list
+                fields:
+                  - label: Image
+                    name: image 
+                    widget: image
+                  - label: Text
+                    name: text
+                    widget: text

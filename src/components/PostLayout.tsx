@@ -63,6 +63,13 @@ export default function PostLayout({
         <article>
           <header>
             <h1>{title}</h1>
+            <ul className={"tag-list"}>
+              {tags.map((it, i) => (
+                <li key={i}>
+                  <TagButton tag={getTag(it)} />
+                </li>
+              ))}
+            </ul>
             <div className={"metadata"}>
               <div>
                 <Date date={date} />
@@ -73,13 +80,6 @@ export default function PostLayout({
             </div>
           </header>
           <div className={styles.content}>{children}</div>
-          <ul className={"tag-list"}>
-            {tags.map((it, i) => (
-              <li key={i}>
-                <TagButton tag={getTag(it)} />
-              </li>
-            ))}
-          </ul>
         </article>
         <footer>
           <div className={"social-list"}>

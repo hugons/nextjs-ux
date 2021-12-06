@@ -1,3 +1,4 @@
+
 backend:
   name: git-gateway
   branch: master
@@ -148,57 +149,45 @@ collections:
     slug: "{{slug}}"
     identifier_field: slug
     summary: "{{title}}"
-    files:
-      - file: "src/pages/index.md"
-        label: "Landing Page"
-        name: "index"
-        fields:
-          - label: "Template Key"
-            name: "templateKey"
-            widget: "hidden"
-            default: "index-page"
-          - label: Title
-            name: title
-            widget: string
-          - label: Image
-            name: image
-            widget: image
-          - label: Heading
-            name: heading
-            widget: string
-          - label: Subheading
-            name: subheading
-            widget: string
-          - label: Mainpitch,
-            name: mainpitch,
-            widget: object,
-            fields:
-              - label: Title
-                name: title
-                widget: string
-              - label: Description
-                name: description
-                widget: text
-          - label: Description
-            name: description
-            widget: string
-          - label: Intro
-            name: intro
-            widget: object
-            fields:
-              - label: Heading
-                name: heading
-                widget: string
-              - label: Description
-                name: description
-                widget: text
-              - label: Blurbs
-                name: blurbs
-                widget: list
-                fields:
-                  - label: Image
-                    name: image 
-                    widget: image
-                  - label: Text
-                    name: text
-                    widget: text
+    fields:
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        dateFormat: "YYYY-MM-DD"
+        timeFormat: false
+      - label: Author
+        name: "author"
+        widget: relation
+        collection: "meta"
+        file: "authors"
+        searchFields:
+          - "authors.*.name"
+        displayFields:
+          - "authors.*.name"
+        valueField: "authors.*.slug"
+      - label: Tags
+        label_singular: "Tag"
+        name: "tags"
+        widget: list
+        summary: "{{fields.tag}}"
+        field:
+          label: Tag
+          name: tag
+          widget: relation
+          collection: "meta"
+          file: "tags"
+          searchFields:
+            - "tags.*.name"
+          displayFields:
+            - "tags.*.name"
+          valueField: "tags.*.slug"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
